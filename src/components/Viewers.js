@@ -6,18 +6,33 @@ function Viewers() {
     <Container>
       <Wrap>
         <img src="/images/viewers-disney.png" alt="Marvel" />
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src="/videos/disney.mp4" type="video/mp4" />
+        </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-pixar.png" alt="Marvel" />
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src="/videos/pixar.mp4" type="video/mp4" />
+        </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-marvel.png" alt="Marvel" />
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src="/videos/marvel.mp4" type="video/mp4" />
+        </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-starwars.png" alt="Marvel" />
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src="/videos/star-wars.mp4" type="video/mp4" />
+        </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-national.png" alt="Marvel" />
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src="/videos/national-geo.mp4" type="video/mp4" />
+        </video>
       </Wrap>
     </Container>
   );
@@ -52,5 +67,12 @@ const Wrap = styled.div`
       rgba(0 0 0 / 72%) 0px 30px 22px -10px;
     transform: scale(1.05);
     border-color: rgba(249, 249, 249, 0.8);
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
   }
 `;
