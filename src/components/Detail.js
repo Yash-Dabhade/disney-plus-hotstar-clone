@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 function Detail() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState(0);
+  useEffect(() => {
+    //Grabbing movie info from db
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          // save the movie data
+          setMovie(doc.data());
+        } else {
+          //redirect to home page
+        }
+      });
+  }, []);
+
   return (
     <Container>
       <Background>
-        <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg" />
+        <img src={movie.backgroundImg} />
       </Background>
       <ImageTitle>
-        <img src="/images/viewers-marvel.png" />
+        <img src={movie.titleImg} />
       </ImageTitle>
       <Controls>
         <PlayButton>
@@ -26,11 +45,8 @@ function Detail() {
           <img src="/images/group-icon.png" alt="group-watch" />
         </GroupWatchButton>
       </Controls>
-      <SubTitle>2018 * 5m * Family, Fantasy, Sci-Fi</SubTitle>
-      <Description>
-        An awesome series of Loki the god of Michief An awesome series of Loki
-        the god of Michief An awesome series of Loki the god of Michief
-      </Description>
+      <SubTitle>{movie.subTitle}</SubTitle>
+      <Description>{movie.description}</Description>
     </Container>
   );
 }
@@ -65,6 +81,7 @@ const ImageTitle = styled.div`
   min-width: 200px;
   width: 35vw;
   margin-top: 60px;
+  margin-bottom: 20px;
 
   img {
     width: 100%;
