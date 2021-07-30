@@ -1,59 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import { selectMovies } from "../features/movie/movieSlice";
+import { useSelector } from "react-redux";
 
 function Movies() {
+  const movies = useSelector(selectMovies);
+  console.log(movies);
+
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtc_8Z6s3Vwu685gEdC6vW5gKjlvXQx-RNA&usqp=CAU"
-            alt="error"
-          />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <img src={movie.cardImg} alt="error" />
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
